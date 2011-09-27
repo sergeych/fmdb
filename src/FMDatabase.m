@@ -982,7 +982,7 @@
     
     // FIXME: make sure the savepoint name doesn't have a ' in it.
     
-    NSAssert(name, @"Missing name for a savepoint", nil);
+    NSAssert(name, @"Missing name for a savepoint");
     
     if ([self pool]) {
         [self popFromPool];
@@ -1002,7 +1002,7 @@
 
 - (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError**)outErr {
     
-    NSAssert(name, @"Missing name for a savepoint", nil);
+    NSAssert(name, @"Missing name for a savepoint");
     
     BOOL worked = [self executeUpdate:[NSString stringWithFormat:@"release savepoint '%@';", name]];
     
@@ -1019,7 +1019,7 @@
 
 - (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError**)outErr {
     
-    NSAssert(name, @"Missing name for a savepoint", nil);
+    NSAssert(name, @"Missing name for a savepoint"  );
     
     BOOL worked = [self executeUpdate:[NSString stringWithFormat:@"rollback transaction to savepoint '%@';", name]];
     

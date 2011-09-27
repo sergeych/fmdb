@@ -111,7 +111,6 @@
         
         [db setPool:self];
     }];
-    
     return db;
 }
 

@@ -26,6 +26,9 @@ type ret = [resultSet sel:0];                                        \
 [resultSet setParentDB:nil];                                         \
 return ret;
 
+-(id)objectForQuery:(NSString*)query,... {
+    RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(id, objectForColumnIndex);    
+}
 
 - (NSString*)stringForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(NSString *, stringForColumnIndex);

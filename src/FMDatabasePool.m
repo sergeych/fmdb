@@ -93,7 +93,9 @@
             }
             
             db = [FMDatabase databaseWithPath:_path];
-            
+            db.logsErrors = YES;
+            db.crashOnErrors = YES;
+            db.shouldCacheStatements = YES;
             if ([db open]) {
                 if ([_delegate respondsToSelector:@selector(databasePool:shouldAddDatabaseToPool:)] && ![_delegate databasePool:self shouldAddDatabaseToPool:db]) {
                     [db close];

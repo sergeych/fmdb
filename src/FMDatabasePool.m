@@ -175,8 +175,13 @@
         [db beginTransaction];
     }
     
-    
-    block(db, &shouldRollback);
+    @try {
+        block(db, &shouldRollback);
+    }
+    @catch (id error) {
+        NSLog(@"*** Transaction block caused exception (rolling back): %@", error);
+        shouldRollback = YES;
+    }
     
     if (shouldRollback) {
         [db rollback];
